@@ -19,6 +19,11 @@ function AddTraining(props) {
   });
 
   const handleClickOpen = () => {
+    setTraining({
+      date: props.params.data.date,
+      activity: props.params.data.activity,
+      duration: props.params.data.duration,
+    });
     setOpen(true);
   };
 
@@ -27,7 +32,7 @@ function AddTraining(props) {
   };
 
   const handleSave = () => {
-    props.addTrainings(training);
+    props.editTraining(props.params, training);
     handleClose();
   };
 
@@ -43,10 +48,10 @@ function AddTraining(props) {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        New Training
+        Edit
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add Training Buddy</DialogTitle>
+        <DialogTitle>Edit training information</DialogTitle>
         <DialogContent>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DateTimePicker

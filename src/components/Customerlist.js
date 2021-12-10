@@ -3,6 +3,8 @@ import { AgGridReact } from "ag-grid-react";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import AddCustomer from "./AddCustomer";
+import AddTraining from "./AddTraining";
+import EditCustomer from "./EditCustomer";
 
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
@@ -43,6 +45,24 @@ function Customerlist() {
     }
   };
 
+  const addTrainings = (training) => {
+    fetch("https://customerrest.herokuapp.com/api/trainings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(training),
+    }).then((response) => {
+      if (response.ok) {
+        setMsg("New raining added!");
+        setOpen(true);
+        fetchCustomers();
+      } else {
+        alert("Something went wrong");
+      }
+    });
+  };
+
   const addCustomer = (customer) => {
     fetch("https://customerrest.herokuapp.com/api/customers", {
       method: "POST",
@@ -51,7 +71,35 @@ function Customerlist() {
       },
       body: JSON.stringify(customer),
     })
-      .then((response) => fetchCustomers())
+      .then((response) => {
+        if (response.ok) {
+          setMsg("Car added!");
+          setOpen(true);
+          fetchCustomers();
+        } else {
+          alert("Something went wrong");
+        }
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const editCustomer = (link, updatedCustomer) => {
+    fetch(link.data.links[0].href, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(updatedCustomer),
+    })
+      .then((response) => {
+        if (response.ok) {
+          setMsg("Customer information edited!");
+          setOpen(true);
+          fetchCustomers();
+        } else {
+          alert("Something went wrong");
+        }
+      })
       .catch((err) => console.error(err));
   };
 
@@ -70,6 +118,16 @@ function Customerlist() {
       width: 120,
       field: "links[1].href",
       cellRendererFramework: (params) => (
+        <EditCustomer editCustomer={editCustomer} params={params} />
+      ),
+    },
+    {
+      headerName: " ",
+      sortable: false,
+      filter: false,
+      width: 120,
+      field: "links[1].href",
+      cellRendererFramework: (params) => (
         <Button
           size="small"
           color="error"
@@ -77,6 +135,14 @@ function Customerlist() {
         >
           Delete
         </Button>
+      ),
+    },
+    {
+      headerName: "",
+      width: 190,
+      field: "links.0.href",
+      cellRendererFramework: (params) => (
+        <AddTraining addTrainings={addTrainings} params={params} />
       ),
     },
   ];
