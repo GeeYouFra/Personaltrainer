@@ -105,7 +105,7 @@ function Traininglist() {
       <Snackbar
         open={open}
         message={msg}
-        autoHideDuration={3000}
+        autoHideDuration={5000}
         onClose={handleClose}
       />
     </div>

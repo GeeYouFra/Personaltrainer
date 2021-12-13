@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <AppBar className="centered" position="static" color="transparent">
-        <Typography variant="h4">The New You : Personal trainer</Typography>
+        <Typography variant="h4">The New You : Personal Trainer</Typography>
 
         <Tabs value={value} onChange={handleChange}>
           <Tab label="TRAINEES" />

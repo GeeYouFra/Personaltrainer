@@ -38,7 +38,7 @@ function Customerlist() {
       fetch(url, { method: "DELETE" })
         .then((response) => {
           if (response.ok) {
-            setMsg("A tired trainee left the group");
+            setMsg("A Tired Trainee Left The Group");
             setOpen(true);
             fetchCustomers();
           } else {
@@ -58,7 +58,7 @@ function Customerlist() {
       body: JSON.stringify(training),
     }).then((response) => {
       if (response.ok) {
-        setMsg("New raining added!");
+        setMsg("Now Get To Work!");
         setOpen(true);
         fetchCustomers();
       } else {
@@ -77,7 +77,7 @@ function Customerlist() {
     })
       .then((response) => {
         if (response.ok) {
-          setMsg("Car added!");
+          setMsg("Congrats! Training Starts Now!");
           setOpen(true);
           fetchCustomers();
         } else {
@@ -97,7 +97,7 @@ function Customerlist() {
     })
       .then((response) => {
         if (response.ok) {
-          setMsg("Customer information edited!");
+          setMsg("You're Doing It Right!");
           setOpen(true);
           fetchCustomers();
         } else {
@@ -165,7 +165,7 @@ function Customerlist() {
   const csvReport = {
     data: data,
     headers: headers,
-    filename: "The New You: Training List",
+    filename: "The New You Training List",
   };
 
   return (
@@ -205,7 +205,7 @@ function Customerlist() {
       <Snackbar
         open={open}
         message={msg}
-        autoHideDuration={3000}
+        autoHideDuration={5000}
         onClose={handleClose}
       />
     </div>

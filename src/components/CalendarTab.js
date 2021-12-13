@@ -25,7 +25,7 @@ function CalendarTab() {
               ", " +
               training.customer.firstname,
             start: moment(training.date)._d,
-            end: moment(training.date).add(training.duration, "minutes")._d,
+            end: moment(training.date).add(training.duration, "mins.")._d,
           }))
         );
       })

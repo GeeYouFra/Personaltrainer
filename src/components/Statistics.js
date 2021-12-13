@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import {
-  BarChart,
-  Bar,
   XAxis,
   YAxis,
+  BarChart,
+  Bar,
   CartesianGrid,
-  Tooltip,
-  Legend,
   ResponsiveContainer,
+  Legend,
+  Tooltip,
 } from "recharts";
 
 function Statistics() {
@@ -17,12 +17,12 @@ function Statistics() {
   useEffect(() => {
     fetch("https://customerrest.herokuapp.com/api/trainings")
       .then((response) => response.json())
-      .then((data) => formatData(data.content))
+      .then((data) => handleData(data.content))
       .then((stat) => setData(stat))
       .catch((err) => console.error(err));
   }, []);
 
-  const formatData = (data) => {
+  const handleData = (data) => {
     let statistics = _(data)
       .groupBy("activity")
       .map((objs, key) => ({
