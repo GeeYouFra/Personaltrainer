@@ -49,10 +49,10 @@ function AddCustomer(props) {
   return (
     <div>
       <Tooltip title="Edit">
-        <EditIcon title="Edit" variant="outlined" onClick={handleClickOpen} />
+        <EditIcon variant="outlined" onClick={handleClickOpen} />
       </Tooltip>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Edit Customer Information</DialogTitle>
+        <DialogTitle>Re-model Yourself</DialogTitle>
         <DialogContent>
           <TextField
             margin="dense"

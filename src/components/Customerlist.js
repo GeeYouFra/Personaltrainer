@@ -12,7 +12,6 @@ import DownloadForOfflineOutlinedIcon from "@mui/icons-material/DownloadForOffli
 
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
-import { blue } from "@mui/material/colors";
 
 function Customerlist() {
   const [customers, setCustomers] = useState([]);
@@ -174,7 +173,13 @@ function Customerlist() {
       <AddCustomer addCustomer={addCustomer} />
       <div
         className="ag-theme-material"
-        style={{ height: 500, width: "90%", margin: "auto" }}
+        style={{
+          height: 500,
+          width: "90%",
+          margin: "auto",
+          marginTop: 5,
+          marginBottom: 5,
+        }}
       >
         <AgGridReact
           rowData={customers}

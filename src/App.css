@@ -52,3 +52,11 @@
 .button {
   background-color: lightblue !important;
 }
+
+body {
+  background-image: url(./images/winter.jpg);
+}
+
+.recharts-layer recharts-bar-rectangle path {
+  background-color: green !important;
+}

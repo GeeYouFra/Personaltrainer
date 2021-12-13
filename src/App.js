@@ -2,6 +2,7 @@ import "./App.css";
 import Customerlist from "./components/Customerlist";
 import Traininglist from "./components/Traininglist";
 import CalendarTab from "./components/CalendarTab";
+import Statistics from "./components/Statistics";
 import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
 import Tabs from "@mui/material/Tabs";
@@ -22,6 +23,7 @@ function App() {
           <Tab label="TRAINEES" />
           <Tab label="SCHEDULES" />
           <Tab label="CALENDAR" />
+          <Tab label="STATISTICS" />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -32,6 +34,9 @@ function App() {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <CalendarTab />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <Statistics />
       </TabPanel>
     </div>
   );

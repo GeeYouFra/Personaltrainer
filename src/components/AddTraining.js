@@ -48,7 +48,7 @@ function AddTraining(props) {
         <AddCircleOutlinedIcon variant="outlined" onClick={handleClickOpen} />
       </Tooltip>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add New Training Activity</DialogTitle>
+        <DialogTitle>Yes! That's The Spirit!</DialogTitle>
         <DialogContent>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DateTimePicker
