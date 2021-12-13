@@ -5,9 +5,14 @@ import Snackbar from "@mui/material/Snackbar";
 import AddCustomer from "./AddCustomer";
 import AddTraining from "./AddTraining";
 import EditCustomer from "./EditCustomer";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import Tooltip from "@mui/material/Tooltip";
+import { CSVLink } from "react-csv";
+import DownloadForOfflineOutlinedIcon from "@mui/icons-material/DownloadForOfflineOutlined";
 
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
+import { blue } from "@mui/material/colors";
 
 function Customerlist() {
   const [customers, setCustomers] = useState([]);
@@ -115,7 +120,7 @@ function Customerlist() {
       headerName: " ",
       sortable: false,
       filter: false,
-      width: 120,
+      width: 70,
       field: "links[1].href",
       cellRendererFramework: (params) => (
         <EditCustomer editCustomer={editCustomer} params={params} />
@@ -125,21 +130,21 @@ function Customerlist() {
       headerName: " ",
       sortable: false,
       filter: false,
-      width: 120,
+      width: 70,
       field: "links[1].href",
       cellRendererFramework: (params) => (
-        <Button
-          size="small"
-          color="error"
-          onClick={() => deleteCustomer(params.data.links[1].href)}
-        >
-          Delete
-        </Button>
+        <Tooltip title="Delete">
+          <DeleteForeverIcon
+            size="medium"
+            color="error"
+            onClick={() => deleteCustomer(params.data.links[1].href)}
+          />
+        </Tooltip>
       ),
     },
     {
       headerName: "",
-      width: 190,
+      width: 70,
       field: "links.0.href",
       cellRendererFramework: (params) => (
         <AddTraining addTrainings={addTrainings} params={params} />
@@ -147,21 +152,51 @@ function Customerlist() {
     },
   ];
 
+  const data = customers;
+  const headers = [
+    { label: "First Name", key: "firstname" },
+    { label: "Last Name", key: "lastname" },
+    { label: "Email", key: "email" },
+    { label: "Phone Number", key: "phone" },
+    { label: "Street Address", key: "streetaddress" },
+    { label: "Post Code", key: "postcode" },
+    { label: "City", key: "city" },
+  ];
+
+  const csvReport = {
+    data: data,
+    headers: headers,
+    filename: "The New You: Training List",
+  };
+
   return (
-    <div>
+    <div className="trainee">
       <AddCustomer addCustomer={addCustomer} />
       <div
         className="ag-theme-material"
-        style={{ height: 600, width: "90%", margin: "auto" }}
+        style={{ height: 500, width: "90%", margin: "auto" }}
       >
         <AgGridReact
           rowData={customers}
           columnDefs={columns}
           pagination={true}
-          paginationPageSize={10}
+          paginationPageSize={8}
           suppressCellSelection={true}
         />
       </div>
+      <Button
+        title="Limited Edition!"
+        className="button"
+        variant="outlined"
+        endIcon={<DownloadForOfflineOutlinedIcon />}
+      >
+        <CSVLink
+          {...csvReport}
+          style={{ textDecoration: "none", color: "#B77567" }}
+        >
+          Grab A Copy Now!
+        </CSVLink>
+      </Button>
       <Snackbar
         open={open}
         message={msg}

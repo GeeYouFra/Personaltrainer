@@ -5,6 +5,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 
 function AddCustomer(props) {
   const [open, setOpen] = React.useState(false);
@@ -37,8 +38,14 @@ function AddCustomer(props) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        New Trainee
+      <Button
+        title="You Can Do It!"
+        className="button"
+        variant="outlined"
+        onClick={handleClickOpen}
+        endIcon={<GroupAddOutlinedIcon />}
+      >
+        New Training Buddy
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add The New You</DialogTitle>

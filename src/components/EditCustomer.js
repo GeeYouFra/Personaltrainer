@@ -5,6 +5,8 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import EditIcon from "@mui/icons-material/Edit";
+import Tooltip from "@mui/material/Tooltip";
 
 function AddCustomer(props) {
   const [open, setOpen] = React.useState(false);
@@ -46,11 +48,11 @@ function AddCustomer(props) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Edit
-      </Button>
+      <Tooltip title="Edit">
+        <EditIcon title="Edit" variant="outlined" onClick={handleClickOpen} />
+      </Tooltip>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Edit information</DialogTitle>
+        <DialogTitle>Edit Customer Information</DialogTitle>
         <DialogContent>
           <TextField
             margin="dense"

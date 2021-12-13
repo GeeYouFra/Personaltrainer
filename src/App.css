@@ -1,4 +1,5 @@
 .App {
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -35,4 +36,19 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.centered {
+  height: 100 vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trainee {
+  margin-top: 10px;
+}
+
+.button {
+  background-color: lightblue !important;
 }

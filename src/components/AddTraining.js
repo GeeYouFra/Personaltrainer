@@ -7,6 +7,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
+import Tooltip from "@mui/material/Tooltip";
 
 function AddTraining(props) {
   const [open, setOpen] = React.useState(false);
@@ -42,11 +44,11 @@ function AddTraining(props) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        New Training
-      </Button>
+      <Tooltip title="Add training">
+        <AddCircleOutlinedIcon variant="outlined" onClick={handleClickOpen} />
+      </Tooltip>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add Training Buddy</DialogTitle>
+        <DialogTitle>Add New Training Activity</DialogTitle>
         <DialogContent>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DateTimePicker

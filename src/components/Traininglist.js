@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import Tooltip from "@mui/material/Tooltip";
 
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
@@ -43,7 +44,7 @@ function Traininglist() {
       )
         .then((response) => {
           if (response.ok) {
-            setMsg("Successful! See you next time");
+            setMsg("Why oh why! See you next time mate!");
             setOpen(true);
             fetchTrainings();
           } else {
@@ -58,7 +59,7 @@ function Traininglist() {
     {
       valueGetter: fulldate,
       headerName: "Date",
-      width: 150,
+      width: 200,
       sortable: true,
       filter: true,
     },
@@ -78,13 +79,13 @@ function Traininglist() {
       width: 120,
       field: "links[1].href",
       cellRendererFramework: (params) => (
-        <Button
-          size="small"
-          color="error"
-          onClick={() => deleteTraining(params)}
-        >
-          Delete
-        </Button>
+        <Tooltip title="Delete">
+          <DeleteForeverIcon
+            size="medium"
+            color="error"
+            onClick={() => deleteTraining(params)}
+          />
+        </Tooltip>
       ),
     },
   ];
@@ -92,7 +93,7 @@ function Traininglist() {
   return (
     <div
       className="ag-theme-material"
-      style={{ height: 600, width: "90%", margin: "auto" }}
+      style={{ height: 600, width: "60%", margin: "auto" }}
     >
       <AgGridReact
         rowData={trainings}

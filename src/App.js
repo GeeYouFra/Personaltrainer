@@ -1,8 +1,8 @@
 import "./App.css";
 import Customerlist from "./components/Customerlist";
 import Traininglist from "./components/Traininglist";
+import CalendarTab from "./components/CalendarTab";
 import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -15,12 +15,13 @@ function App() {
   };
   return (
     <div className="App">
-      <AppBar position="static" color="transparent">
-        <Typography variant="h5">Personal Trainer</Typography>
+      <AppBar className="centered" position="static" color="transparent">
+        <Typography variant="h4">The New You : Personal trainer</Typography>
 
         <Tabs value={value} onChange={handleChange}>
           <Tab label="TRAINEES" />
           <Tab label="SCHEDULES" />
+          <Tab label="CALENDAR" />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -28,6 +29,9 @@ function App() {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Traininglist />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <CalendarTab />
       </TabPanel>
     </div>
   );
