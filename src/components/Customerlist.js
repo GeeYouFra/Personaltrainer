@@ -174,18 +174,18 @@ function Customerlist() {
       <div
         className="ag-theme-material"
         style={{
-          height: 500,
+          height: 450,
           width: "90%",
           margin: "auto",
-          marginTop: 5,
-          marginBottom: 5,
+          marginTop: 15,
+          marginBottom: 10,
         }}
       >
         <AgGridReact
           rowData={customers}
           columnDefs={columns}
           pagination={true}
-          paginationPageSize={8}
+          paginationPageSize={7}
           suppressCellSelection={true}
         />
       </div>

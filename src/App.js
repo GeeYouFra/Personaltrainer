@@ -8,6 +8,10 @@ import Typography from "@mui/material/Typography";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import React, { useState } from "react";
+import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
+import ScheduleIcon from "@mui/icons-material/Schedule";
+import DateRangeIcon from "@mui/icons-material/DateRange";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
 
 function App() {
   const [value, setValue] = useState(0);
@@ -20,10 +24,10 @@ function App() {
         <Typography variant="h4">The New You : Personal Trainer</Typography>
 
         <Tabs value={value} onChange={handleChange}>
-          <Tab label="TRAINEES" />
-          <Tab label="SCHEDULES" />
-          <Tab label="CALENDAR" />
-          <Tab label="STATISTICS" />
+          <Tab label="TRAINEES" icon={<AccessibilityNewIcon />} />
+          <Tab label="SCHEDULES" icon={<ScheduleIcon />} />
+          <Tab label="CALENDAR" icon={<DateRangeIcon />} />
+          <Tab label="STATISTICS" icon={<EqualizerIcon />} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

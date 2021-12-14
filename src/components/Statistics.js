@@ -44,10 +44,7 @@ function Statistics() {
         }}
       >
         <ResponsiveContainer width="90%" height={550}>
-          <BarChart
-            data={data}
-            margin={{ top: 50, right: 30, left: 20, bottom: 0 }}
-          >
+          <BarChart data={data} margin={{ top: 70, right: 30, left: 20 }}>
             <CartesianGrid stroke="#40E06D" strokeDasharray="5 5" />
             <XAxis dataKey="activity" stroke="black" />
             <YAxis name="Duration (min)" stroke="black" />
@@ -55,7 +52,7 @@ function Statistics() {
             <Legend
               width={100}
               wrapperStyle={{
-                top: 50,
+                top: 80,
                 right: -100,
                 backgroundColor: "#D1CFE0",
                 border: "1px solid #d5d5d5",

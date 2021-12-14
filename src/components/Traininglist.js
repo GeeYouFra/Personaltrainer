@@ -93,13 +93,13 @@ function Traininglist() {
   return (
     <div
       className="ag-theme-material"
-      style={{ height: 600, width: "60%", margin: "auto" }}
+      style={{ height: 550, width: "60%", margin: "auto", marginTop: 20 }}
     >
       <AgGridReact
         rowData={trainings}
         columnDefs={columns}
         pagination={true}
-        paginationPageSize={10}
+        paginationPageSize={9}
         suppressCellSelection={true}
       />
       <Snackbar
